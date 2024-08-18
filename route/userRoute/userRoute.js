@@ -9,6 +9,8 @@ const userPortfolio = require('../../controllers/userControllers/userPortfolio')
 const userPublication = require('../../controllers/userControllers/userPublication')
 const userService = require('../../controllers/userControllers/userService')
 const usercontact = require('../../controllers/userControllers/usercontact')
+const userError = require('../../controllers/userControllers/userError')
+
 
 
 router.get('/',userHome.userHome)
@@ -27,7 +29,7 @@ router.get('/service',userService.userService)
 
 router.get('/contact',usercontact.usercontact)
 
-// router.get('/error',home.userError)
+router.get('/error',userError.userError)
 
 
 
