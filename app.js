@@ -29,8 +29,6 @@ app.set('views', [
 ])
 
 
-
-
 app.use('/', userRouter)
 app.use('/admin',adminRouter)
 
