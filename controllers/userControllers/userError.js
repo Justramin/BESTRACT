@@ -6,7 +6,7 @@ const userError = async (req, res) => {
         res.render('error');
     } catch (error) {
         console.error('Error in userError:', error);
-        // res.redirect('/userError');
+        res.redirect('/userError');
     }
 };
 

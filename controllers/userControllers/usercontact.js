@@ -4,7 +4,7 @@ const usercontact = async (req, res) => {
         res.render('contact');
     } catch (error) {
         console.error('Error in usercontact:', error);
-        // res.redirect('/userError');
+        res.redirect('/userError');
     }
 };
 

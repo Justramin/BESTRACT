@@ -6,7 +6,7 @@ const userHome = async (req, res) => {
         res.render('userHome');
     } catch (error) {
         console.error('Error in userHome:', error);
-        // res.redirect('/userError');
+        res.redirect('/userError');
     }
 };
 
