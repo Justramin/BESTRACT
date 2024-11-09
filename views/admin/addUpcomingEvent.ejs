@@ -1,0 +1,125 @@
+<%- include('./head') %>
+
+<div class="page-wrapper">
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="card">
+                <div class="card-header">Add More Upcoming Event</div>
+                <div class="card-body">
+                    <form action="/admin/addUpcomingEventPost" method="post" id="eventForm">
+                        <div class="form-group row">
+                            <label for="eventHeading" class="col-sm-2 col-form-label">Event Heading</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="eventHeading" class="form-control" id="eventHeading" placeholder="Enter event heading" required>
+                                <small class="text-danger" id="headingError" style="display: none;">Please enter the event heading.</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="eventType" class="col-sm-2 col-form-label">Event Type</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="eventType" class="form-control" id="eventType" placeholder="Enter event type" required>
+                                <small class="text-danger" id="typeError" style="display: none;">Please enter the event type.</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="eventDate" class="col-sm-2 col-form-label">Event Date</label>
+                            <div class="col-sm-10">
+                                <input type="date" name="eventDate" class="form-control" id="eventDate" required>
+                                <small class="text-danger" id="dateError" style="display: none;">Please select a future date.</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="location" class="col-sm-2 col-form-label">Location</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="location" class="form-control" id="location" placeholder="Enter location" required>
+                                <small class="text-danger" id="locationError" style="display: none;">Please enter the location.</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-10 offset-sm-2">
+                                <button type="button" class="btn btn-primary" onclick="validateForm(event)">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function validateForm(event) {
+        event.preventDefault(); // Prevent form from submitting immediately
+
+        // Clear previous error messages
+        document.getElementById('headingError').style.display = 'none';
+        document.getElementById('typeError').style.display = 'none';
+        document.getElementById('dateError').style.display = 'none';
+        document.getElementById('locationError').style.display = 'none';
+
+        let isValid = true;
+
+        // Get form values
+        const heading = document.getElementById('eventHeading').value.trim();
+        const type = document.getElementById('eventType').value.trim();
+        const date = document.getElementById('eventDate').value;
+        const location = document.getElementById('location').value.trim();
+
+        // Check if heading is empty
+        if (!heading) {
+            document.getElementById('headingError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Check if event type is empty
+        if (!type) {
+            document.getElementById('typeError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Check if location is empty
+        if (!location) {
+            document.getElementById('locationError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Check if date is in the future
+        if (date) {
+            const selectedDate = new Date(date);
+            const currentDate = new Date();
+
+            // Set time to midnight for accurate comparison
+            currentDate.setHours(0, 0, 0, 0);
+
+            if (selectedDate <= currentDate) {
+                document.getElementById('dateError').style.display = 'block';
+                isValid = false;
+            }
+        } else {
+            document.getElementById('dateError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Submit form if valid
+        if (isValid) {
+            alert("Form submitted successfully!");
+            document.getElementById("eventForm").submit(); // Submit form
+        }
+    }
+</script>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bs-custom-file-input.min.js"></script>
+<script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+<script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+<script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<%- include('./head') %>
+
+<div class="page-wrapper">
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="card">
+                <div class="card-header">Add Promotion History</div>
+                <div class="card-body">
+                    <form action="/admin/addTestimonialPost" method="post" id="promotionForm" enctype="multipart/form-data">
+                        <!-- Name -->
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" required>
+                                <small class="text-danger" id="nameError" style="display: none;">Please enter the name.</small>
+                            </div>
+                        </div>
+
+                        <!-- Organization -->
+                        <div class="form-group row">
+                            <label for="organization" class="col-sm-2 col-form-label">Organization</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="organization" class="form-control" id="organization" placeholder="Enter organization name" required>
+                                <small class="text-danger" id="organizationError" style="display: none;">Please enter the organization name.</small>
+                            </div>
+                        </div>
+
+                        <!-- Promotion Notes -->
+                        <div class="form-group row">
+                            <label for="promotionNotes" class="col-sm-2 col-form-label">Promotion Notes</label>
+                            <div class="col-sm-10">
+                                <textarea name="promotionNotes" class="form-control" id="promotionNotes" rows="4" placeholder="Enter promotion notes" required></textarea>
+                                <small class="text-danger" id="promotionNotesError" style="display: none;">Please enter promotion notes.</small>
+                            </div>
+                        </div>
+
+                        <!-- Image -->
+                        <div class="form-group row">
+                            <label for="promotionImage" class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="image" class="form-control-file" id="promotionImage" accept="image/*" required onchange="previewImages(event)">
+                                <small class="text-danger" id="imageError" style="display: none;">Please upload an image.</small>
+                            </div>
+                        </div>
+
+                        <!-- Image Preview -->
+                        <div id="imagePreviewContainer" class="form-group row" style="display: none;">
+                            <label class="col-sm-2 col-form-label">Selected Image</label>
+                            <div class="col-sm-10" id="imagePreview">
+                                <!-- Image preview will be dynamically added here -->
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-group row">
+                            <div class="col-sm-10 offset-sm-2">
+                                <button type="button" class="btn btn-primary" onclick="validateForm(event)">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function previewImages(event) {
+        const file = event.target.files[0];
+        const imageContainer = document.getElementById('imagePreview');
+        imageContainer.innerHTML = ''; // Clear previous preview
+
+        if (file) {
+            document.getElementById('imagePreviewContainer').style.display = 'block';
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imagePreview = document.createElement('img');
+                imagePreview.src = e.target.result;
+                imagePreview.width = 100;
+                imagePreview.height = 100;
+                imageContainer.appendChild(imagePreview);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            document.getElementById('imagePreviewContainer').style.display = 'none';
+        }
+    }
+
+    function validateForm(event) {
+        event.preventDefault();
+
+        // Clear previous error messages
+        document.getElementById('nameError').style.display = 'none';
+        document.getElementById('organizationError').style.display = 'none';
+        document.getElementById('promotionNotesError').style.display = 'none';
+        document.getElementById('imageError').style.display = 'none';
+
+        let isValid = true;
+
+        // Form validation
+        if (!document.getElementById('name').value.trim()) {
+            document.getElementById('nameError').style.display = 'block';
+            isValid = false;
+        }
+
+        if (!document.getElementById('organization').value.trim()) {
+            document.getElementById('organizationError').style.display = 'block';
+            isValid = false;
+        }
+
+        if (!document.getElementById('promotionNotes').value.trim()) {
+            document.getElementById('promotionNotesError').style.display = 'block';
+            isValid = false;
+        }
+
+        const image = document.getElementById('promotionImage').files[0];
+        if (!image) {
+            document.getElementById('imageError').style.display = 'block';
+            isValid = false;
+        }
+        
+        if (isValid) {
+            alert("Form submitted successfully!");
+            document.getElementById("promotionForm").submit();
+        }
+    }
+</script>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bs-custom-file-input.min.js"></script>
+<script src="assets/plugins/simplebar/js/simplebar.min.js"></script>

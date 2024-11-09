@@ -1,0 +1,209 @@
+<%- include('./head') %>
+
+<div class="page-wrapper">
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="card">
+                <div class="card-header">Add Event History</div>
+                <div class="card-body">
+                    <form action="/admin/addEventHistoryPost" method="post" id="eventForm" enctype="multipart/form-data">
+                        <!-- Main Heading -->
+                        <div class="form-group row">
+                            <label for="mainHeading" class="col-sm-2 col-form-label">Main Heading</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="mainHeading" class="form-control" id="mainHeading" placeholder="Enter main heading" required>
+                                <small class="text-danger" id="mainHeadingError" style="display: none;">Please enter the main heading.</small>
+                            </div>
+                        </div>
+
+                        <!-- Date -->
+                        <div class="form-group row">
+                            <label for="eventDate" class="col-sm-2 col-form-label">Date</label>
+                            <div class="col-sm-10">
+                                <input type="date" name="eventDate" class="form-control" id="eventDate" required>
+                                <small class="text-danger" id="dateError" style="display: none;">Please select a valid date.</small>
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="form-group row">
+                            <label for="location" class="col-sm-2 col-form-label">Location</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="location" class="form-control" id="location" placeholder="Enter location" required>
+                                <small class="text-danger" id="locationError" style="display: none;">Please enter the location.</small>
+                            </div>
+                        </div>
+
+                        <!-- Event Type -->
+                        <div class="form-group row">
+                            <label for="eventType" class="col-sm-2 col-form-label">Event Type</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="eventType" class="form-control" id="eventType" placeholder="Enter event type" required>
+                                <small class="text-danger" id="eventTypeError" style="display: none;">Please enter the event type.</small>
+                            </div>
+                        </div>
+
+                        <!-- Subheading -->
+                        <div class="form-group row">
+                            <label for="subHeading" class="col-sm-2 col-form-label">Subheading</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="subHeading" class="form-control" id="subHeading" placeholder="Enter subheading" required>
+                                <small class="text-danger" id="subHeadingError" style="display: none;">Please enter the subheading.</small>
+                            </div>
+                        </div>
+
+                        <!-- Short Description -->
+                        <div class="form-group row">
+                            <label for="shortDescription" class="col-sm-2 col-form-label">Short Description</label>
+                            <div class="col-sm-10">
+                                <textarea name="shortDescription" class="form-control" id="shortDescription" rows="4" placeholder="Enter a short description" required></textarea>
+                                <small class="text-danger" id="descriptionError" style="display: none;">Please enter a short description.</small>
+                            </div>
+                        </div>
+
+                        <!-- Images -->
+                        <div class="form-group row">
+                            <label for="eventImages" class="col-sm-2 col-form-label">Images</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="image" class="form-control-file" id="eventImages" accept="image/*" multiple required onchange="previewImages(event)">
+                                <small class="text-danger" id="imagesError" style="display: none;">Please upload at least one image.</small>
+                            </div>
+                        </div>
+
+                        <!-- Image Previews -->
+                        <div id="imagePreviewContainer" class="form-group row" style="display: none;">
+                            <label class="col-sm-2 col-form-label">Selected Images</label>
+                            <div class="col-sm-10" id="imagePreviews">
+                                <!-- Image previews will be dynamically added here -->
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-group row">
+                            <div class="col-sm-10 offset-sm-2">
+                                <button type="button" class="btn btn-primary" onclick="validateForm(event)">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function previewImages(event) {
+        const files = event.target.files;
+        const imageContainer = document.getElementById('imagePreviews');
+        imageContainer.innerHTML = ''; // Clear previous previews
+
+        if (files.length > 0) {
+            document.getElementById('imagePreviewContainer').style.display = 'block';
+        } else {
+            document.getElementById('imagePreviewContainer').style.display = 'none';
+        }
+
+        Array.from(files).forEach((file, index) => {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const imagePreview = document.createElement('div');
+                imagePreview.classList.add('image-preview');
+                imagePreview.style.display = 'inline-block';
+                imagePreview.style.marginRight = '10px';
+                
+                imagePreview.innerHTML = `
+                    <img src="${e.target.result}" alt="Image Preview" width="100" height="100">
+                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteImage(${index})">Delete</button>
+                `;
+                
+                imagePreview.setAttribute('data-index', index);
+                imageContainer.appendChild(imagePreview);
+            };
+
+            reader.readAsDataURL(file);
+        });
+    }
+
+    function deleteImage(index) {
+        const imagePreview = document.querySelector(`.image-preview[data-index="${index}"]`);
+        imagePreview.remove();
+
+        const files = document.getElementById('eventImages').files;
+        const newFiles = Array.from(files).filter((file, i) => i !== index);
+        
+        const dataTransfer = new DataTransfer();
+        newFiles.forEach(file => dataTransfer.items.add(file));
+        
+        document.getElementById('eventImages').files = dataTransfer.files;
+
+        // Hide image container if no images left
+        if (newFiles.length === 0) {
+            document.getElementById('imagePreviewContainer').style.display = 'none';
+        }
+    }
+
+    function validateForm(event) {
+        event.preventDefault();
+
+        // Clear previous error messages
+        document.getElementById('mainHeadingError').style.display = 'none';
+        document.getElementById('dateError').style.display = 'none';
+        document.getElementById('locationError').style.display = 'none';
+        document.getElementById('eventTypeError').style.display = 'none';
+        document.getElementById('subHeadingError').style.display = 'none';
+        document.getElementById('descriptionError').style.display = 'none';
+        document.getElementById('imagesError').style.display = 'none';
+
+        let isValid = true;
+
+        // Form validation
+        if (!document.getElementById('mainHeading').value.trim()) {
+            document.getElementById('mainHeadingError').style.display = 'block';
+            isValid = false;
+        }
+
+        if (!document.getElementById('eventDate').value) {
+            document.getElementById('dateError').style.display = 'block';
+            isValid = false;
+        }
+
+        if (!document.getElementById('location').value.trim()) {
+            document.getElementById('locationError').style.display = 'block';
+            isValid = false;
+        }
+
+        if (!document.getElementById('eventType').value.trim()) {
+            document.getElementById('eventTypeError').style.display = 'block';
+            isValid = false;
+        }
+
+        if (!document.getElementById('subHeading').value.trim()) {
+            document.getElementById('subHeadingError').style.display = 'block';
+            isValid = false;
+        }
+
+        if (!document.getElementById('shortDescription').value.trim()) {
+            document.getElementById('descriptionError').style.display = 'block';
+            isValid = false;
+        }
+
+        const images = document.getElementById('eventImages').files;
+        if (images.length === 0) {
+            document.getElementById('imagesError').style.display = 'block';
+            isValid = false;
+        }
+
+        if (isValid) {
+            alert("Form submitted successfully!");
+            document.getElementById("eventForm").submit();
+        }
+    }
+</script>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bs-custom-file-input.min.js"></script>
+<script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+<script src="assets/plugins/met
