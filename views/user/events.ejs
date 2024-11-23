@@ -140,7 +140,7 @@
                                 <li><a href="/">Homepage</a></li>
                                 <li><a href="">Events</a></li>
                             </ul>
-                            <h1 class="mil-mb-60">Exploring <span class="mil-thin">the World</span> <br> Through Our <span class="mil-thin">Events</span></h1>
+                            <h1 class="mil-mb-60">Shaping <span class="mil-thin">Success </span> <br> Through Impactful<span class="mil-thin"> Events</span></h1>
                             <a href="#blog" class="mil-link mil-dark mil-arrow-place mil-down-arrow">
                                 <span>Events</span>
                             </a>
@@ -331,7 +331,7 @@
                         <div class="row">
                             <div class="col-lg-10">
 
-                                <span class="mil-suptitle mil-suptitle-right mil-suptitle-dark mil-up">Looking to make your mark? We'll help you turn <br> your project into a success story.</span>
+                                <span class="mil-suptitle mil-suptitle-right mil-suptitle-dark mil-up">Ready to make an impact? <br> We’ll turn your project into a success.</span>
 
                             </div>
                         </div>
@@ -339,11 +339,22 @@
                             <h2 class="mil-up mil-mb-60">Stay up-to-date <span class="mil-thin">with the</span><br> latest news by <span class="mil-thin">enrolling</span><br> to our <span class="mil-thin">followers!</span></h2>
                             <div class="row justify-content-center mil-up">
                                 <div class="col-lg-4">
-                                    <a href="/contact"><form class="mil-subscribe-form mil-subscribe-form-2 mil-up">
-                                        <input type="text" placeholder="Enter our email">
+                                    <form class="mil-subscribe-form mil-subscribe-form-2 mil-up" id="redirectForm">
+                                        <input type="text" placeholder="Follow to Our Social Media">
                                         <button type="submit" class="mil-button mil-icon-button-sm mil-arrow-place"></button>
-                                    </form></a>
+                                    </form>
                                 </div>
+                                
+                                <script>
+                                    // Handle the form submission to redirect
+                                    document.getElementById('redirectForm').addEventListener('submit', function (event) {
+                                        event.preventDefault(); // Prevent the form's default behavior
+                                        // Redirect to your Linktree
+                                        window.location.href = 'https://linktr.ee/justinram';
+                                    });
+                                </script>
+                                
+                                
                             </div>
                         </div>
                     </div>
