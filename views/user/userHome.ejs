@@ -3,7 +3,19 @@
 <%- include('./head') %>
 
 
+<style>
+    .logo-image {
+        /* filter: invert(100%); */
+        backdrop-filter: invert(0);
+}
 
+@media (max-width: 768px) {
+    .logo-image {
+        width: 71px; 
+        height: 65px;
+    }
+}
+</style>
         <!-- menu -->
         <div class="mil-menu-frame">
             <!-- frame clone -->
@@ -23,9 +35,6 @@
                                 <ul>
                                     <li class="mil-has-children mil-active">
                                         <a href="/">Homepage</a>
-                                    </li>
-                                    <li class="mil-has-children">
-                                        <a href="/consulting1">Consulting1</a>
                                     </li>
                                     <li class="mil-has-children">
                                         <a href="/events">Events</a>
@@ -51,29 +60,28 @@
                                     <div class="row">
                                         <div class="col-lg-8 mil-mb-60">
 
-                                            <h6 class="mil-muted mil-mb-30">Strategic Consulting</h6>
+                                            <h6 class="mil-muted mil-mb-30">Business Consulting</h6>
 
                                             <ul class="mil-menu-list">
-                                                <li><a href="" class="mil-light-soft">Marketing & Branding Strategy</a></li>
-                                                <li><a href="" class="mil-light-soft">Customer Experience & Retention</a></li>
-                                                <li><a href="" class="mil-light-soft">Strategic Planning & Analysis</a></li>
-                                                <li><a href="" class="mil-light-soft">Leadership & Executive Coaching</a></li>
-                                                <li><a href="" class="mil-light-soft">Technology & Digital Transformation</a></li>
-                                                <li><a href="" class="mil-light-soft">Innovation & Growth Consulting</a></li>
+                                                <li><a href="" class="mil-light-soft">Management counsulling</a></li>
+                                                <li><a href="" class="mil-light-soft">Marketing and sale counsulling</a></li>
+                                                <li><a href="" class="mil-light-soft">IT / Technology counsulling</a></li>
+                                                <li><a href="" class="mil-light-soft">HR and Recruitment counsulling</a></li>
+                                                <li><a href="" class="mil-light-soft">Operation counsulling</a></li>
                                                 
-
                                             </ul>
 
                                         </div>
                                         <div class="col-lg-4 mil-mb-60">
 
-                                            <h6 class="mil-muted mil-mb-30">Operational Consulting</h6>
+                                            <h6 class="mil-muted mil-mb-30">Training&Recruitment</h6>
 
                                             <ul class="mil-menu-list">
-                                                <li><a href="" class="mil-light-soft">Process Optimization</a></li>
-                                                <li><a href="" class="mil-light-soft">Financial Consulting</a></li>
-                                                <li><a href="" class="mil-light-soft">Operational Excellence</a></li>
-                                                <li><a href="" class="mil-light-soft">Risk & Compliance</a></li>
+                                                <li><a href="" class="mil-light-soft">Employee Onboarding</a></li>
+                                                <li><a href="" class="mil-light-soft">Skill development</a></li>
+                                                <li><a href="" class="mil-light-soft">Leadership development </a></li>
+                                                <li><a href="" class="mil-light-soft">Corporate Training</a></li>
+                                                <li><a href="" class="mil-light-soft">Campus Recruitment</a></li>
                                             </ul>
 
                                         </div>
@@ -113,7 +121,9 @@
         <!-- frame -->
         <div class="mil-frame">
             <div class="mil-frame-top">
-                <a href="/" class="mil-logo">Bē2.</a>
+                <a href="/" class="mil-logo">
+                    <img class="logo-image " src="user/Images/Logo/logo_edited.png" alt="Logo">
+                </a>
                 <div class="mil-menu-btn">
                     <span></span>
                 </div>

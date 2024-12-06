@@ -2,7 +2,51 @@
 
 
 <%- include('./head') %>
+<style>
+/* Modal Background */
+#promotionNotesModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 1000;
+}
 
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #ff0000; /* Change color to red on hover */
+}
+
+
+</style>
 		<!--page-wrapper-->
 		<div class="page-wrapper">
 			<!--page-content-wrapper-->
@@ -39,75 +83,46 @@
 										</tr>
 									</thead>
 
-
-
-									
+	
 									<tbody>
-										<tr>
-											<td>1</td>
+										<% testimonial.forEach((testi, index) => { %>
+										  <tr>
+											<td><%= index + 1 %></td>
 											<td>
-												<div class="product-img bg-transparent border">
-													<img src="assets/images/icons/shirt.png" width="35" alt="">
-												</div>
+											  <div class="product-img bg-transparent border">
+												<img src="<%= testi.image %>" width="35" alt="<%= testi.name %>">
+											  </div>
 											</td>
-											<td>Alan Chris Antoni</td>
-											<td>Alan Solutions</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">View</a>
-											</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Active</a>
-											</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Edit</a>
-											</td>
-										</tr>
-										<tr>
-											<td>2</td>
+											<td><%= testi.name %></td>
+											<td><%= testi.organization %></td>
 											<td>
-												<div class="product-img bg-transparent border">
-													<img src="assets/images/icons/shirt.png" width="35" alt="">
-												</div>
+											  <a href="javascript:void(0);" class="btn btn-sm btn-light btn-block radius-30" onclick="viewPromotion('<%= testi.promotionNotes %>')">View</a>
 											</td>
-											<td>Arshad bin Abdhulla</td>
-											<td>Tech Innovator</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">View</a>
-											</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Inactive</a>
-											</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Edit</a>
-											</td>
-										</tr>
-										<tr>
-											<td>3</td>
 											<td>
-												<div class="product-img bg-transparent border">
-													<img src="assets/images/icons/shirt.png" width="35" alt="">
-												</div>
+												<a href="/admin/editTestimonialStatus/<%= testi._id %>?status=<%= testi.status %>" 
+												   class="btn btn-sm btn-light btn-block radius-30">
+												  <%= testi.status ? 'Active' : 'Inactive' %>
+												</a>
 											</td>
-											<td>Akhil moorkhandathi</td>
-											<td>Global Enterprises</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">View</a>
-											</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Active</a>
-											</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Edit</a>
-											</td>
-										</tr>
-										<tr>
-											<td>4</td>
+
 											<td>
-												<div class="product-img bg-transparent border">
-													<img src="assets/images/icons/shirt.png" width="35" alt="">
-												</div>
+											  <a href="/admin/editTestimonial/<%= testi._id %>" class="btn btn-sm btn-light btn-block radius-30">
+															Edit
+														</a>
 											</td>
-											<td>Pranav Padmanabhan</td>
-											<td>Padma LTD</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">View</a>
-											</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Inactive</a>
-											</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Edit</a>
-											</td>
-										</tr>
-									</tbody>
+										  </tr>
+										<% }); %>
+									  </tbody>
+									  
+									  <!-- Modal to show Promotion Notes -->
+									  <div id="promotionNotesModal" style="display:none;">
+										<div class="modal-content">
+										  <span class="close" onclick="closeModal()">&times;</span>
+										  <h3>Promotion Notes</h3>
+										  <p id="promotionNotesText"></p>
+										</div>
+									  </div>
+									  
 								</table>
 							</div>
 						</div>
@@ -126,41 +141,16 @@
 		
 		<!-- end footer -->
 	</div>
-	<!--start switcher-->
-	<!-- <div class="switcher-wrapper">
-		<div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
-		</div>
-		<div class="switcher-body">
-			<h5 class="mb-0 text-uppercase">Theme Customizer</h5>
-			<hr/>
-			<p class="mb-0">Gaussian Texture</p>
-			  <hr>
-			  
-			  <ul class="switcher">
-				<li id="theme1"></li>
-				<li id="theme2"></li>
-				<li id="theme3"></li>
-				<li id="theme4"></li>
-				<li id="theme5"></li>
-				<li id="theme6"></li>
-			  </ul>
-               <hr>
-			  <p class="mb-0">Gradient Background</p>
-			  <hr>
-			  
-			  <ul class="switcher">
-				<li id="theme7"></li>
-				<li id="theme8"></li>
-				<li id="theme9"></li>
-				<li id="theme10"></li>
-				<li id="theme11"></li>
-				<li id="theme12"></li>
-			  </ul>
-		</div>
-	</div> -->
-	<!--end switcher-->
-	<!-- JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script>
+		function viewPromotion(promotionNotes) {	
+   			 document.getElementById('promotionNotesText').innerText = promotionNotes;
+   			 document.getElementById('promotionNotesModal').style.display = 'flex';
+		}
+		function closeModal() {
+    		document.getElementById('promotionNotesModal').style.display = 'none';
+		}
+	</script>
+	
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/popper.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>

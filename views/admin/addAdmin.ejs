@@ -1,0 +1,59 @@
+<%- include('./head') %>
+
+<div class="page-wrapper">
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="card radius-15">
+                <div class="card-header border-bottom-0">
+                    <h5 class="mb-0">Add a New Admin</h5>
+                </div>
+                <div class="card-body">
+                    <form action="/admin/addAdminPost" method="POST">
+                        <!-- Admin Name -->
+                        <div class="form-group">
+                            <label for="name">Admin Name</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter admin name" required>
+                        </div>
+                        
+                        <!-- Employee ID -->
+                        <div class="form-group">
+                            <label for="employeId">Employee ID</label>
+                            <input type="text" id="employeId" name="employeId" class="form-control" placeholder="Enter employee ID" required>
+                        </div>
+                        
+                        <!-- Role -->
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <input type="text" id="role" name="role" class="form-control" placeholder="Enter role (e.g., Trainer, Accountant)" required>
+                        </div>
+                        
+                        <!-- Phone Number -->
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" id="phone" name="phone" class="form-control" placeholder="Enter phone number">
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter email address" required>
+                        </div>
+                        
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Enter password" required>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-primary radius-15">Add Admin</button>
+                            <a href="/admin" class="btn btn-light radius-15">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

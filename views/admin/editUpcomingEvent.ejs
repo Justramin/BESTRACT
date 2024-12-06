@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>BESTRACT</title>
+	<!--favicon-->
+	<!-- <link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" /> -->
+
+	<link href="../../admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="../../admin/https://use.fontawesome.com/releases/v5.8.1/css/all.css" type="text/css">
+	<!--plugins-->
+	<link href="../../admin/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" type="text/css" />
+	<link href="../../admin/assets/plugins/fullcalendar/css/main.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../admin/assets/plugins/fancy-file-uploader/fancy_fileupload.css" rel="stylesheet" type="text/css"/>
+	<link href="../../admin/assets/plugins/Drag-And-Drop/dist/imageuploadify.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../admin/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" type="text/css"/>
+	<link href="../../admin/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+	<!-- loader-->
+	<link href="../../admin/assets/css/pace.min.css" rel="stylesheet"type="text/css" />
+	<script src="../../admin/assets/js/pace.min.js"></script>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="../../admin/assets/css/bootstrap.min.css" />
+	<!-- Icons CSS -->
+	<link rel="stylesheet" href="../../admin/assets/css/icons.css" />
+	<!-- App CSS -->
+	<link rel="stylesheet" href="../../admin/assets/css/app.css" />
+	
+	
+</head>
+
+<body class="bg-theme bg-theme1">
+	<!-- wrapper -->
+	<div class="wrapper">
+		<!--header-->
+		<header class="top-header">
+			<nav class="navbar navbar-expand">
+				<div class="sidebar-header">
+					
+					<div>
+						<h4 class="d-none d-lg-flex logo-text">Bē.</h4>
+					</div>
+					<a href="javascript:;" class="toggle-btn ml-lg-auto"> <i class="bx bx-menu"></i>
+					</a>
+				</div>
+
+			</nav>
+		</header>
+		<!--end header-->
+
+
+
+
+
+
+		<!--navigation-->
+		<div class="nav-container">
+			<div class="mobile-topbar-header">
+			
+				<div>
+					<h4 class="logo-text">Bē.</h4>
+				</div>
+				<a href="javascript:;" class="toggle-btn ml-auto"> <i class="bx bx-menu"></i>
+				</a>
+			</div>
+			<nav class="topbar-nav">
+				<ul class="metismenu" id="menu">
+					<li>
+						<a href="/admin" class="">
+							<div class="parent-icon"><i class="bx bx-home-alt"></i>
+							</div>
+							<div class="menu-title">Admin Home</div>
+						</a>
+						
+					</li>
+					<li>
+						<a href="/admin/upcomingEvent" class="">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'></i>
+							</div>
+							<div class="menu-title">Upcoming Events Details</div>
+						</a>
+					</li>
+					<li>
+						<a class="" href="/admin/eventHistory">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'"></i>
+							</div>
+							<div class="menu-title">Event History</div>
+						</a>
+
+					</li>
+					<li>
+						<a class="" href="/admin/testimonials">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'></i>
+							</div>
+							<div class="menu-title">Testimonials</div>
+						</a>
+						
+					</li>
+					<li>
+						<a class="" href="/admin/adminToDo">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'></i>
+							</div>
+							<div class="menu-title">To Do</div>
+						</a>
+					</li>
+					<li>
+						<a class="" href="/admin/adminLogin">
+							<div class="parent-icon"> <i class="bx bx-lock"></i>
+							</div>
+							<div class="menu-title">Login or Logout</div>
+						</a>
+						
+					</li>
+				</ul>
+			</nav>
+
+            <!-- <img src="../../user/Images/11.webp" alt="image " /> -->
+		</div>
+
+		<!--end navigation-->
+
+<div class="page-wrapper">
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="card">
+                <div class="card-header">Add More Upcoming Event</div>
+                <div class="card-body">
+                    <form action="/admin/editUpcomingEventPost/<%= event._id %>" method="post" id="eventForm">
+                        <div class="form-group row">
+                            <label for="eventHeading" class="col-sm-2 col-form-label">Event Heading</label>
+                            <div class="col-sm-10">
+                                <input
+                                    type="text"
+                                    name="eventHeading"
+                                    class="form-control"
+                                    id="eventHeading"
+                                    value="<%= event.eventHeading %>"
+                                    required
+                                />
+                                <small class="text-danger" id="headingError" style="display: none;">Please enter the event heading.</small>
+                            </div>
+                        </div>
+                    
+                        <div class="form-group row">
+                            <label for="eventType" class="col-sm-2 col-form-label">Event Type</label>
+                            <div class="col-sm-10">
+                                <input
+                                    type="text"
+                                    name="eventType"
+                                    class="form-control"
+                                    id="eventType"
+                                    value="<%= event.eventType %>"
+                                    required
+                                />
+                                <small class="text-danger" id="typeError" style="display: none;">Please enter the event type.</small>
+                            </div>
+                        </div>
+                    
+                        <div class="form-group row">
+                            <label for="eventDate" class="col-sm-2 col-form-label">Event Date</label>
+                            <div class="col-sm-10">
+                                <input
+                                    type="date"
+                                    name="eventDate"
+                                    class="form-control"
+                                    id="eventDate"
+                                    value="<%= event.eventDate.toISOString().split('T')[0] %>"
+                                    required
+                                />
+                                <small class="text-danger" id="dateError" style="display: none;">Please select a future date.</small>
+                            </div>
+                        </div>
+                    
+                        <div class="form-group row">
+                            <label for="location" class="col-sm-2 col-form-label">Location</label>
+                            <div class="col-sm-10">
+                                <input
+                                    type="text"
+                                    name="location"
+                                    class="form-control"
+                                    id="location"
+                                    value="<%= event.location %>"
+                                    required
+                                />
+                                <small class="text-danger" id="locationError" style="display: none;">Please enter the location.</small>
+                            </div>
+                        </div>
+                    
+                        <div class="form-group row">
+                            <div class="col-sm-10 offset-sm-2">
+                                <button type="submit" class="btn btn-primary">Update Event</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function validateForm(event) {
+        event.preventDefault(); // Prevent form from submitting immediately
+
+        // Clear previous error messages
+        document.getElementById('headingError').style.display = 'none';
+        document.getElementById('typeError').style.display = 'none';
+        document.getElementById('dateError').style.display = 'none';
+        document.getElementById('locationError').style.display = 'none';
+
+        let isValid = true;
+
+        // Get form values
+        const heading = document.getElementById('eventHeading').value.trim();
+        const type = document.getElementById('eventType').value.trim();
+        const date = document.getElementById('eventDate').value;
+        const location = document.getElementById('location').value.trim();
+
+        // Check if heading is empty
+        if (!heading) {
+            document.getElementById('headingError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Check if event type is empty
+        if (!type) {
+            document.getElementById('typeError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Check if location is empty
+        if (!location) {
+            document.getElementById('locationError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Check if date is in the future
+        if (date) {
+            const selectedDate = new Date(date);
+            const currentDate = new Date();
+
+            // Set time to midnight for accurate comparison
+            currentDate.setHours(0, 0, 0, 0);
+
+            if (selectedDate <= currentDate) {
+                document.getElementById('dateError').style.display = 'block';
+                isValid = false;
+            }
+        } else {
+            document.getElementById('dateError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Submit form if valid
+        if (isValid) {
+            alert("Form submitted successfully!");
+            document.getElementById("eventForm").submit(); // Submit form
+        }
+    }
+</script>
+
+
+<script src="../../admin/assets/js/jquery.min.js"></script>
+<script src="../../admin/assets/js/popper.min.js"></script>
+<script src="../../admin/assets/js/bootstrap.min.js"></script>
+<script src="../../admin/assets/js/bs-custom-file-input.min.js"></script>
+<script src="../../admin/assets/plugins/simplebar/js/simplebar.min.js"></script>
+<script src="../../admin/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+<script src="../../admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+<script src="../../admin/assets/js/app.js"></script>
+
+</body>
+</html>

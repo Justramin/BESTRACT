@@ -21,6 +21,10 @@ const testimonialSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
+    status: {
+        type: Boolean,
+        default: true 
+    },
     createdAt: {
         type: Date,
         default: Date.now,

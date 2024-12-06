@@ -7,8 +7,6 @@ const adminToDo = (req, res) => {
 
 
 
-
-
 module.exports = {
-    adminToDo
+    adminToDo,
 };

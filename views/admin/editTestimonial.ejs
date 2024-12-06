@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>BESTRACT</title>
+	<!--favicon-->
+	<!-- <link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" /> -->
+
+	<link href="../../admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="../../admin/https://use.fontawesome.com/releases/v5.8.1/css/all.css" type="text/css">
+	<!--plugins-->
+	<link href="../../admin/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" type="text/css" />
+	<link href="../../admin/assets/plugins/fullcalendar/css/main.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../admin/assets/plugins/fancy-file-uploader/fancy_fileupload.css" rel="stylesheet" type="text/css"/>
+	<link href="../../admin/assets/plugins/Drag-And-Drop/dist/imageuploadify.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../admin/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" type="text/css"/>
+	<link href="../../admin/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+	<!-- loader-->
+	<link href="../../admin/assets/css/pace.min.css" rel="stylesheet"type="text/css" />
+	<script src="../../admin/assets/js/pace.min.js"></script>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="../../admin/assets/css/bootstrap.min.css" />
+	<!-- Icons CSS -->
+	<link rel="stylesheet" href="../../admin/assets/css/icons.css" />
+	<!-- App CSS -->
+	<link rel="stylesheet" href="../../admin/assets/css/app.css" />
+	
+	
+</head>
+
+<body class="bg-theme bg-theme1">
+	<!-- wrapper -->
+	<div class="wrapper">
+		<!--header-->
+		<header class="top-header">
+			<nav class="navbar navbar-expand">
+				<div class="sidebar-header">
+					
+					<div>
+						<h4 class="d-none d-lg-flex logo-text">Bē.</h4>
+					</div>
+					<a href="javascript:;" class="toggle-btn ml-lg-auto"> <i class="bx bx-menu"></i>
+					</a>
+				</div>
+
+			</nav>
+		</header>
+		<!--end header-->
+
+
+
+
+
+
+		<!--navigation-->
+		<div class="nav-container">
+			<div class="mobile-topbar-header">
+			
+				<div>
+					<h4 class="logo-text">Bē.</h4>
+				</div>
+				<a href="javascript:;" class="toggle-btn ml-auto"> <i class="bx bx-menu"></i>
+				</a>
+			</div>
+			<nav class="topbar-nav">
+				<ul class="metismenu" id="menu">
+					<li>
+						<a href="/admin" class="">
+							<div class="parent-icon"><i class="bx bx-home-alt"></i>
+							</div>
+							<div class="menu-title">Admin Home</div>
+						</a>
+						
+					</li>
+					<li>
+						<a href="/admin/upcomingEvent" class="">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'></i>
+							</div>
+							<div class="menu-title">Upcoming Events Details</div>
+						</a>
+					</li>
+					<li>
+						<a class="" href="/admin/eventHistory">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'"></i>
+							</div>
+							<div class="menu-title">Event History</div>
+						</a>
+
+					</li>
+					<li>
+						<a class="" href="/admin/testimonials">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'></i>
+							</div>
+							<div class="menu-title">Testimonials</div>
+						</a>
+						
+					</li>
+					<li>
+						<a class="" href="/admin/adminToDo">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'></i>
+							</div>
+							<div class="menu-title">To Do</div>
+						</a>
+					</li>
+					<li>
+						<a class="" href="/admin/adminLogin">
+							<div class="parent-icon"> <i class="bx bx-lock"></i>
+							</div>
+							<div class="menu-title">Login or Logout</div>
+						</a>
+						
+					</li>
+				</ul>
+			</nav>
+
+            <!-- <img src="../../user/Images/11.webp" alt="image " /> -->
+		</div>
+
+		<!--end navigation-->
+
+<div class="page-wrapper">
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="card">
+                <div class="card-header">Edit Testimonial</div>
+                <div class="card-body">
+                    <form action="/admin/updateTestimonial/<%= testi._id %>" method="post" id="editTestimonialForm" enctype="multipart/form-data">
+                        <!-- Name -->
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" value="<%= testi.name %>" required>
+                            </div>
+                        </div>
+
+                        <!-- Organization -->
+                        <div class="form-group row">
+                            <label for="organization" class="col-sm-2 col-form-label">Organization</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="organization" class="form-control" id="organization" placeholder="Enter organization name" value="<%= testi.organization %>" required>
+                            </div>
+                        </div>
+
+                        <!-- Promotion Notes -->
+                        <div class="form-group row">
+                            <label for="promotionNotes" class="col-sm-2 col-form-label">Promotion Notes</label>
+                            <div class="col-sm-10">
+                                <textarea name="promotionNotes" class="form-control" id="promotionNotes" rows="4" placeholder="Enter promotion notes" required><%= testi.promotionNotes %></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Current Image -->
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Current Image</label>
+                            <div class="col-sm-10">
+                                <div class="d-flex align-items-center">
+                                    <img src="<%= testi.image %>" alt="Current Image" width="100" height="100" class="mr-3">
+                                    <div>
+                                        <label for="removeImage" class="form-check-label">
+                                            <input type="checkbox" name="removeImage" id="removeImage" class="form-check-input"> Remove Image
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Upload New Image -->
+                        <div class="form-group row">
+                            <label for="promotionImage" class="col-sm-2 col-form-label">Change Image</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="image" class="form-control-file" id="promotionImage" accept="image/*">
+                                <small class="form-text text-muted">Leave this blank if you don't want to change the image.</small>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-group row">
+                            <div class="col-sm-10 offset-sm-2">
+                                <button type="submit" class="btn btn-primary">Update</button>
+                                <a href="/admin/testimonials" class="btn btn-secondary">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/plugins/simplebar/js/simplebar.min.js"></script>

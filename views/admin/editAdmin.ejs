@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>BESTRACT</title>
+	<!--favicon-->
+	<!-- <link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" /> -->
+
+	<link href="../../admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="../../admin/https://use.fontawesome.com/releases/v5.8.1/css/all.css" type="text/css">
+	<!--plugins-->
+	<link href="../../admin/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" type="text/css" />
+	<link href="../../admin/assets/plugins/fullcalendar/css/main.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../admin/assets/plugins/fancy-file-uploader/fancy_fileupload.css" rel="stylesheet" type="text/css"/>
+	<link href="../../admin/assets/plugins/Drag-And-Drop/dist/imageuploadify.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../admin/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" type="text/css"/>
+	<link href="../../admin/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+	<!-- loader-->
+	<link href="../../admin/assets/css/pace.min.css" rel="stylesheet"type="text/css" />
+	<script src="../../admin/assets/js/pace.min.js"></script>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="../../admin/assets/css/bootstrap.min.css" />
+	<!-- Icons CSS -->
+	<link rel="stylesheet" href="../../admin/assets/css/icons.css" />
+	<!-- App CSS -->
+	<link rel="stylesheet" href="../../admin/assets/css/app.css" />
+	
+	
+</head>
+
+<body class="bg-theme bg-theme1">
+	<!-- wrapper -->
+	<div class="wrapper">
+		<!--header-->
+		<header class="top-header">
+			<nav class="navbar navbar-expand">
+				<div class="sidebar-header">
+					
+					<div>
+						<h4 class="d-none d-lg-flex logo-text">Bē.</h4>
+					</div>
+					<a href="javascript:;" class="toggle-btn ml-lg-auto"> <i class="bx bx-menu"></i>
+					</a>
+				</div>
+
+			</nav>
+		</header>
+		<!--end header-->
+
+
+
+
+
+
+		<!--navigation-->
+		<div class="nav-container">
+			<div class="mobile-topbar-header">
+			
+				<div>
+					<h4 class="logo-text">Bē.</h4>
+				</div>
+				<a href="javascript:;" class="toggle-btn ml-auto"> <i class="bx bx-menu"></i>
+				</a>
+			</div>
+			<nav class="topbar-nav">
+				<ul class="metismenu" id="menu">
+					<li>
+						<a href="/admin" class="">
+							<div class="parent-icon"><i class="bx bx-home-alt"></i>
+							</div>
+							<div class="menu-title">Admin Home</div>
+						</a>
+						
+					</li>
+					<li>
+						<a href="/admin/upcomingEvent" class="">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'></i>
+							</div>
+							<div class="menu-title">Upcoming Events Details</div>
+						</a>
+					</li>
+					<li>
+						<a class="" href="/admin/eventHistory">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'"></i>
+							</div>
+							<div class="menu-title">Event History</div>
+						</a>
+
+					</li>
+					<li>
+						<a class="" href="/admin/testimonials">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'></i>
+							</div>
+							<div class="menu-title">Testimonials</div>
+						</a>
+						
+					</li>
+					<li>
+						<a class="" href="/admin/adminToDo">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'></i>
+							</div>
+							<div class="menu-title">To Do</div>
+						</a>
+					</li>
+					<li>
+						<a class="" href="/admin/adminLogin">
+							<div class="parent-icon"> <i class="bx bx-lock"></i>
+							</div>
+							<div class="menu-title">Login or Logout</div>
+						</a>
+						
+					</li>
+				</ul>
+			</nav>
+
+            <!-- <img src="../../user/Images/11.webp" alt="image " /> -->
+		</div>
+
+		<!--end navigation-->
+
+<div class="page-wrapper">
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="card radius-15">
+                <div class="card-header border-bottom-0">
+                    <h5 class="mb-0">Edit Admin Details</h5>
+                </div>
+                <div class="card-body">
+                    <form action="/admin/editAdminPost/<%= admin._id %>" method="POST">
+                        <!-- Admin Name -->
+                        <div class="form-group">
+                            <label for="name">Admin Name</label>
+                            <input type="text" id="name" name="name" class="form-control" value="<%= admin.name %>" placeholder="Enter admin name" required>
+                        </div>
+                        
+                        <!-- Employee ID -->
+                        <div class="form-group">
+                            <label for="employeId">Employee ID</label>
+                            <input type="text" id="employeId" name="employeId" class="form-control" value="<%= admin.employeId %>" placeholder="Enter employee ID" required>
+                        </div>
+                        
+                        <!-- Role -->
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <input type="text" id="role" name="role" class="form-control" value="<%= admin.role %>" placeholder="Enter role (e.g., Trainer, Accountant)" required>
+                        </div>
+                        
+                        <!-- Phone Number -->
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" id="phone" name="phone" class="form-control" value="<%= admin.phone %>" placeholder="Enter phone number">
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" value="<%= admin.email %>" placeholder="Enter email address" required>
+                        </div>
+                        
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Enter new password (leave blank to keep current)">
+                        </div>
+                        
+                       
+                        
+                        <!-- Submit Button -->
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-primary radius-15">Save Changes</button>
+                            <a href="/admin" class="btn btn-light radius-15">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

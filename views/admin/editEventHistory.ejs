@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>BESTRACT</title>
+	<!--favicon-->
+	<!-- <link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" /> -->
+
+	<link href="../../admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="../../admin/https://use.fontawesome.com/releases/v5.8.1/css/all.css" type="text/css">
+	<!--plugins-->
+	<link href="../../admin/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" type="text/css" />
+	<link href="../../admin/assets/plugins/fullcalendar/css/main.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../admin/assets/plugins/fancy-file-uploader/fancy_fileupload.css" rel="stylesheet" type="text/css"/>
+	<link href="../../admin/assets/plugins/Drag-And-Drop/dist/imageuploadify.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../admin/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" type="text/css"/>
+	<link href="../../admin/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+	<!-- loader-->
+	<link href="../../admin/assets/css/pace.min.css" rel="stylesheet"type="text/css" />
+	<script src="../../admin/assets/js/pace.min.js"></script>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="../../admin/assets/css/bootstrap.min.css" />
+	<!-- Icons CSS -->
+	<link rel="stylesheet" href="../../admin/assets/css/icons.css" />
+	<!-- App CSS -->
+	<link rel="stylesheet" href="../../admin/assets/css/app.css" />
+	
+	
+</head>
+
+<body class="bg-theme bg-theme1">
+	<!-- wrapper -->
+	<div class="wrapper">
+		<!--header-->
+		<header class="top-header">
+			<nav class="navbar navbar-expand">
+				<div class="sidebar-header">
+					
+					<div>
+						<h4 class="d-none d-lg-flex logo-text">Bē.</h4>
+					</div>
+					<a href="javascript:;" class="toggle-btn ml-lg-auto"> <i class="bx bx-menu"></i>
+					</a>
+				</div>
+
+			</nav>
+		</header>
+		<!--end header-->
+
+
+
+
+
+
+		<!--navigation-->
+		<div class="nav-container">
+			<div class="mobile-topbar-header">
+			
+				<div>
+					<h4 class="logo-text">Bē.</h4>
+				</div>
+				<a href="javascript:;" class="toggle-btn ml-auto"> <i class="bx bx-menu"></i>
+				</a>
+			</div>
+			<nav class="topbar-nav">
+				<ul class="metismenu" id="menu">
+					<li>
+						<a href="/admin" class="">
+							<div class="parent-icon"><i class="bx bx-home-alt"></i>
+							</div>
+							<div class="menu-title">Admin Home</div>
+						</a>
+						
+					</li>
+					<li>
+						<a href="/admin/upcomingEvent" class="">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'></i>
+							</div>
+							<div class="menu-title">Upcoming Events Details</div>
+						</a>
+					</li>
+					<li>
+						<a class="" href="/admin/eventHistory">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'"></i>
+							</div>
+							<div class="menu-title">Event History</div>
+						</a>
+
+					</li>
+					<li>
+						<a class="" href="/admin/testimonials">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'></i>
+							</div>
+							<div class="menu-title">Testimonials</div>
+						</a>
+						
+					</li>
+					<li>
+						<a class="" href="/admin/adminToDo">
+							<div class="parent-icon"><i class='bx bx-briefcase-alt'></i>
+							</div>
+							<div class="menu-title">To Do</div>
+						</a>
+					</li>
+					<li>
+						<a class="" href="/admin/adminLogin">
+							<div class="parent-icon"> <i class="bx bx-lock"></i>
+							</div>
+							<div class="menu-title">Login or Logout</div>
+						</a>
+						
+					</li>
+				</ul>
+			</nav>
+
+            <!-- <img src="../../user/Images/11.webp" alt="image " /> -->
+		</div>
+
+		<!--end navigation-->
+
+<div class="page-wrapper">
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="card">
+                <div class="card-header">Edit Event History</div>
+                <div class="card-body">
+                    <form action="/admin/updateEventHistory/<%= event._id %>" method="post" id="editEventForm" enctype="multipart/form-data">
+                        <!-- Main Heading -->
+                        <div class="form-group row">
+                            <label for="mainHeading" class="col-sm-2 col-form-label">Main Heading</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="mainHeading" class="form-control" id="mainHeading" value="<%= event.mainHeading %>" required>
+                            </div>
+                        </div>
+
+                        <!-- Date -->
+                        <div class="form-group row">
+                            <label for="eventDate" class="col-sm-2 col-form-label">Date</label>
+                            <div class="col-sm-10">
+                                <input type="date" name="eventDate" class="form-control" id="eventDate" value="<%= event.eventDate.toISOString().split('T')[0] %>" required>
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="form-group row">
+                            <label for="location" class="col-sm-2 col-form-label">Location</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="location" class="form-control" id="location" value="<%= event.location %>" required>
+                            </div>
+                        </div>
+
+                        <!-- Event Type -->
+                        <div class="form-group row">
+                            <label for="eventType" class="col-sm-2 col-form-label">Event Type</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="eventType" class="form-control" id="eventType" value="<%= event.eventType %>" required>
+                            </div>
+                        </div>
+
+                        <!-- Subheading -->
+                        <div class="form-group row">
+                            <label for="subHeading" class="col-sm-2 col-form-label">Subheading</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="subHeading" class="form-control" id="subHeading" value="<%= event.subHeading %>" required>
+                            </div>
+                        </div>
+
+                        <!-- Short Description -->
+                        <div class="form-group row">
+                            <label for="shortDescription" class="col-sm-2 col-form-label">Short Description</label>
+                            <div class="col-sm-10">
+                                <textarea name="shortDescription" class="form-control" id="shortDescription" rows="4" required><%= event.shortDescription %></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Images -->
+                        <div class="form-group row">
+                            <label for="currentImages" class="col-sm-2 col-form-label">Current Images</label>
+                            <div class="col-sm-10">
+                                <div id="currentImages">
+                                    <% event.images.forEach((image, index) => { %>
+                                        <div class="current-image" style="display: inline-block; margin-right: 10px;" data-index="<%= index %>">
+                                            <img src="<%= image %>" alt="Event Image <%= index + 1 %>" width="100" height="100">
+                                            <p>Image <%= index + 1 %></p>
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="removeImage('<%= index %>')">Remove</button>
+                                        </div>
+                                    <% }) %>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Update Images -->
+                        <div class="form-group row">
+                            <label for="newImages" class="col-sm-2 col-form-label">Update Images</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="image" class="form-control-file" id="newImages" accept="image/*" multiple>
+                                <small class="text-muted">Leave empty to keep the current images.</small>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-group row">
+                            <div class="col-sm-10 offset-sm-2">
+                                <button type="submit" class="btn btn-primary">Update</button>
+                                <a href="/admin/eventHistory" class="btn btn-secondary">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let removedImages = []; // To track removed images
+
+    function removeImage(index) {
+        // Find the image div by index
+        const imageDiv = document.querySelector(`.current-image[data-index='${index}']`);
+
+        if (imageDiv) {
+            // Get the image URL to track for removal
+            const imageUrl = imageDiv.querySelector('img').src;
+
+            // Add the image URL to the removedImages array
+            removedImages.push(imageUrl);
+
+            // Remove the image div from the DOM
+            imageDiv.remove();
+
+            // Log the removed images for debugging
+            console.log("Removed Images:", removedImages);
+        }
+    }
+
+    // Add removedImages array to the form submission
+    document.getElementById('editEventForm').addEventListener('submit', function (event) {
+        const removedImagesInput = document.createElement('input');
+        removedImagesInput.type = 'hidden';
+        removedImagesInput.name = 'removedImages';
+        removedImagesInput.value = JSON.stringify(removedImages);
+
+        this.appendChild(removedImagesInput);
+    });
+</script>
+</body>
+</html>

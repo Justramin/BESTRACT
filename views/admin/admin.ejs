@@ -1,0 +1,116 @@
+<%- include('./head') %>
+
+<!-- Styling -->
+<style>
+    .modal-body p {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+    .table th, .table td {
+        vertical-align: middle;
+    }
+</style>
+
+<!--page-wrapper-->
+<div class="page-wrapper">
+    <!--page-content-wrapper-->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+
+            <div class="card radius-15">
+                <div class="card-header border-bottom-0">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h5 class="mb-0">Enquiry Details</h5>
+                        </div>
+                        <div class="ml-auto">
+                            <a href="/admin/addAdmin" class="btn btn-light radius-15">Add a New Admin</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>SI.No</th>
+                                    <th>Name</th>
+                                    <th>employe Id</th>
+                                    <th>Role</th>
+                                    <th>Phone Number</th>
+                                    <th>Email</th>
+                                    <th>Active</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (adminData && adminData.length > 0) { %>
+                                    <% adminData.forEach((admin, index) => { %>
+                                        <tr>
+                                            <td><%= index + 1 %></td>
+                                            <td><%= admin.name %></td>
+                                            <td><%= admin.employeId %></td>
+                                            <td><%= admin.role %></td>
+                                            <td><%= admin.phone %></td>
+                                            <td><%= admin.email %></td>
+                                            <td>
+												<a href="/admin/editAdminStatus/<%= admin._id %>?status=<%= admin.status %>" 
+												   class="btn btn-sm btn-light btn-block radius-30">
+													<%= admin.status ? 'Active' : 'Inactive' %>
+												</a>
+											</td>
+                                            <td>
+												<a href="/admin/editAdmin/<%= admin._id %>" class="btn btn-sm btn-light btn-block radius-30">
+													Edit
+												</a>
+											</td>
+                                        </tr>
+                                    <% }) %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="8" class="text-center">No admin records found.</td>
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end page-content-wrapper-->
+</div>
+<!--end page-wrapper-->
+
+<!-- Modal for More Detail -->
+<div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailModalLabel">Enquiry Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Customer Name:</strong> <span id="modalName"></span></p>
+                <p><strong>Phone Number:</strong> <span id="modalPhone"></span></p>
+				<p><strong>Email:</strong> <span id="modalEmail"></span></p>
+                <p><strong>Business Type:</strong> <span id="modalBusiness"></span></p>
+                <p><strong>Message:</strong> <span id="modalMessage"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+
+

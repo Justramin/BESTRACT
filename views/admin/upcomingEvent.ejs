@@ -43,50 +43,32 @@
 
 									
 									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Social Media Strategies Conference</td>
-											<td>Marketing and Advertising Events</td>
-											<td>June 15, 2023</td>
-											<td>Dyu Art Cafe, Madiwala</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Active</a>
-											</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Edit</a>
-											</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Branding and Advertising Workshop</td>
-											<td>Marketing and Advertising Events</td>
-											<td>August 3, 2023</td>
-											<td>Cafe Hustle ,HSR Layout</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Inactive</a>
-											</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Edit</a>
-											</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Brand Storytelling Workshop</td>
-											<td>Marketing and Advertising Events</td>
-											<td>October 19, 2023</td>
-											<td>Blue Tokai Coffee Roasters, Indiranagar</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Complete</a>
-											</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Edit</a>
-											</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>Leadership Workshop</td>
-											<td>Leadership and Development Events</td>
-											<td>December 7, 2023</td>
-											<td>Ziesta Rooftop Cafe, Electronic City</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Complete</a>
-											</td>
-											<td><a href="" class="btn btn-sm btn-light btn-block radius-30">Edit</a>
-											</td>
-										</tr>
+										<% if (events && events.length > 0) { %>
+											<% events.forEach((event, index) => { %>
+												<tr>
+													<td><%= index + 1 %></td>
+													<td><%= event.eventHeading %></td>
+													<td><%= event.eventType %></td>
+													<td><%= new Date(event.eventDate).toLocaleDateString() %></td>
+													<td><%= event.location %></td>
+													<td>
+														<a href="/admin/editUpcomingEventStatus/<%= event._id %>?status=<%= event.status %>" 
+														   class="btn btn-sm btn-light btn-block radius-30">
+															<%= event.status ? 'Active' : 'Inactive' %>
+														</a>
+													</td>
+													<td>
+														<a href="/admin/editUpcomingEvent/<%= event._id %>" class="btn btn-sm btn-light btn-block radius-30">
+															Edit
+														</a>
+													</td>
+												</tr>
+											<% }); %>
+										<% } else { %>
+											<tr>
+												<td colspan="7" class="text-center">No Upcoming Events Found</td>
+											</tr>
+										<% } %>
 									</tbody>
 								</table>
 							</div>
