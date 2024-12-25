@@ -7,47 +7,80 @@
 			<!--page-content-wrapper-->
 			<div class="page-content-wrapper">
 				<div class="page-content">
-					<!--breadcrumb-->
-					<!-- <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-						<div class="breadcrumb-title pr-3">Todo</div>
-						<div class="pl-3">
-							<nav aria-label="breadcrumb">
-								<ol class="breadcrumb mb-0 p-0">
-									<li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-home-alt'></i></a>
-									</li>
-									<li class="breadcrumb-item active" aria-current="page">Todo</li>
-								</ol>
-							</nav>
-						</div>
-						<div class="ml-auto">
-							<div class="btn-group">
-								<button type="button" class="btn btn-light">Settings</button>
-								<button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">	<span class="sr-only">Toggle Dropdown</span>
-								</button>
-								<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">	<a class="dropdown-item" href="javascript:;">Action</a>
-									<a class="dropdown-item" href="javascript:;">Another action</a>
-									<a class="dropdown-item" href="javascript:;">Something else here</a>
-									<div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-								</div>
-							</div>
-						</div>
-					</div> -->
-					<!--end breadcrumb-->
+					
+
+					<!--end breadcrumb -->
 					<div class="container">
 						<div class="card">
 							<div class="card-body">
 								<h4 class="mb-0">To Do List</h4>
-								<hr/>
-								<div class="form-row">
-									<div class="col-md-10">
-										<div class="form-group mb-2">
-											<input id="todo-input" type="text" class="form-control" value="">
+								<hr />
+								<form method="POST" action="/admin/creatToDo">
+									<div class="form-row">
+										<div class="col-md-10">
+											<div class="form-group mb-2">
+												<input id="todo-input" name="todoMessage" type="text" class="form-control" placeholder="Type Message" required>
+											</div>
+										</div>
+										<div class="col-md text-right">
+											<button type="submit" class="btn btn-block btn-light">Add todo</button>
 										</div>
 									</div>
-									<div class="col-md text-right">
-										<button type="button" onclick="CreateTodo();" class="btn btn-block btn-light">Add todo</button>
-									</div>
+								</form>
+								<div class="mt-4">
+									<h5>To Do Items</h5>
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th>Si:No</th>
+												<th>Employee Name</th>
+												<th>Message</th>
+												<th>Status</th>
+												<th>Created At</th>
+												<th>Completed At</th>
+											</tr>
+										</thead>
+										<tbody>
+											<% if (ToDoData && ToDoData.length > 0) { %>
+												<% ToDoData.forEach((todo, index) => { %>
+													<tr>
+														<td><%= index + 1 %></td>
+														<td><%= todo.employeeName %></td>
+														<td><%= todo.message %></td>
+														<td><%= todo.status %></td>
+														<td><%= new Date(todo.createdAt).toLocaleString() %></td>
+														<td>
+															<% if (todo.status !== 'completed') { %>
+																<form method="POST" action="/admin/updateToDoStatusCompleted">
+																	<input type="hidden" name="todoId" value="<%= todo._id %>">
+																	<button type="submit" class="btn btn-block btn-light"">Mark as Completed</button>
+																</form>
+															
+															<% } else if (todo.status == 'completed' && !adminStatus ) { %>
+																<button type="submit" class="btn btn-block btn-light"">Completed</button>
+
+															<% } else if (adminStatus) { %>
+																<form method="POST" action="/admin/updateToDoStatusFinished">
+																	<input type="hidden" name="todoId" value="<%= todo._id %>">
+																	<button type="submit" name="action" value="accept" class="btn btn-block btn-light">Accept</button>
+																	<button type="submit" name="action" value="decline" class="btn btn-block btn-light">Decline</button>
+																</form>
+																
+																<% } else { %>
+																	<button type="submit" class="btn btn-block btn-light"">Completed</button>
+															<% } %>
+														</td>
+													</tr>
+												<% }); %>
+											<% } else { %>
+												<tr>
+													<td colspan="5" class="text-center">No To Do Items Found</td>
+												</tr>
+											<% } %>
+										</tbody>
+									</table>
 								</div>
+
 								<div class="form-row mt-3">
 									<div class="col-12">
 										<div id="todo-container"></div>
@@ -56,18 +89,20 @@
 							</div>
 						</div>
 					</div>
+
+
 				</div>
 			</div>
-			<!--end page-content-wrapper-->
 		</div>
-		<!--end page-wrapper-->
-		<!--start overlay-->
+	
 		<div class="overlay toggle-btn-mobile"></div>
-		<!--end overlay-->
-		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-		<!--End Back To Top Button-->
-		
+		<a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+
 	</div>
+
+
+
+
 	<!-- end wrapper -->
 	<!--start switcher-->
 	<!-- <div class="switcher-wrapper">
@@ -113,98 +148,7 @@
 	<script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
 	<!-- App JS -->
 	<script src="assets/js/app.js"></script>
-	<script>
-		 // to do list 
-		 var todos = [{
-			text: "Vedio Editing Peding Works",
-			done: false,
-			id: 0
-		}];
-		var currentTodo = {
-			text: "",
-			done: false,
-			id: 0
-		}
-		document.getElementById("todo-input").oninput = function (e) {
-			currentTodo.text = e.target.value;
-		};
-		/*
-			//jQuery Version
-			$('#todo-input').on('input',function(e){
-				currentTodo.text = e.target.value;
-			   });
-			*/
-		function DrawTodo(todo) {
-			var newTodoHTML = `
-			<div class="pb-3 todo-item" todo-id="${todo.id}">
-				<div class="input-group">
-					<div class="input-group-prepend">
-						<div class="input-group-text">
-							<input type="checkbox" onchange="TodoChecked(${todo.id})" aria-label="Checkbox for following text input" ${todo.done&& "checked"}>
-						</div>
-					</div>
-					<input type="text" readonly class="form-control ${todo.done&&" todo-done "} " aria-label="Text input with checkbox" value="${todo.text}">
-					<div class="input-group-append">
-						<button todo-id="${todo.id}" class="btn btn-light" type="button" onclick="DeleteTodo(this);" id="button-addon2 ">X</button>
-					</div>
-				</div>
-			</div>
-			  `;
-			var dummy = document.createElement("DIV");
-			dummy.innerHTML = newTodoHTML;
-			document.getElementById("todo-container").appendChild(dummy.children[0]);
-			/*
-				//jQuery version
-				 var newTodo = $.parseHTML(newTodoHTML);
-				 $("#todo-container").append(newTodo);
-				*/
-		}
-
-		function RenderAllTodos() {
-			var container = document.getElementById("todo-container");
-			while (container.firstChild) {
-				container.removeChild(container.firstChild);
-			}
-			/*
-				//jQuery version
-				  $("todo-container").empty();
-				*/
-			for (var i = 0; i < todos.length; i++) {
-				DrawTodo(todos[i]);
-			}
-		}
-		RenderAllTodos();
-
-		function DeleteTodo(button) {
-			var deleteID = parseInt(button.getAttribute("todo-id"));
-			/*
-				//jQuery version
-				  var deleteID = parseInt($(button).attr("todo-id"));
-				*/
-			for (let i = 0; i < todos.length; i++) {
-				if (todos[i].id === deleteID) {
-					todos.splice(i, 1);
-					RenderAllTodos();
-					break;
-				}
-			}
-		}
-
-		function TodoChecked(id) {
-			todos[id].done = !todos[id].done;
-			RenderAllTodos();
-		}
-
-		function CreateTodo() {
-			newtodo = {
-				text: currentTodo.text,
-				done: false,
-				id: todos.length
-			}
-			todos.push(newtodo);
-			RenderAllTodos();
-		}
-	</script>
+	
 </body>
 
 </html>

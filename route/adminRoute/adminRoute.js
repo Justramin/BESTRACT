@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const {adminMiddeleware} = require('../../utils/middeleware')
 
 // Controller imports
 const adminHome = require('../../controllers/adminControllers/adminHome');
@@ -15,7 +16,19 @@ const eventHistory = require('../../controllers/adminControllers/eventHistory');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });  // Configure multer as needed
 
+
+
+
+
 // Routes
+router.get('/adminLogin', adminLogin.adminLogin);
+router.post('/adminLoginPost',adminLogin.adminLoginPost)
+router.get('/adminError', adminError.adminError);
+
+
+router.use(adminMiddeleware)
+
+
 router.get('/', adminHome.adminHome);
 
 router.get('/upcomingEvent', upcomingEvent.upcomingEvent);
@@ -43,6 +56,10 @@ router.post('/editAdminPost/:id',admin.editAdminPost)
 
 
 router.get('/adminToDo', adminToDo.adminToDo);
+router.post('/creatToDo',adminToDo.creatToDo);
+router.get('/updateToDoStatus',adminToDo.updateToDoStatus);
+router.post('/updateToDoStatusCompleted',adminToDo.updateToDoStatusCompleted);
+router.post('/updateToDoStatusFinished',adminToDo.updateToDoStatusFinished)
 
 
 
@@ -54,12 +71,5 @@ router.get('/editEventHistory/:id',eventHistory.editEventHistory);
 router.post('/updateEventHistory/:id',upload.array('image', 5),eventHistory.updateEventHistory);
 
 
-
-
-
-
-
-router.get('/adminLogin', adminLogin.adminLogin);
-router.get('/adminError', adminError.adminError);
 
 module.exports = router;

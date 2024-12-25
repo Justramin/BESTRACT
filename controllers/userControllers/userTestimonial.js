@@ -34,7 +34,6 @@ const getHiredPost = async (req, res) => {
             message: req.body.message
         });
         const data =await newJobSeeker.save();
-        console.log(data);
         res.redirect('/testimonial');
     } catch (error) {
         console.error('Error in getHiredPost:', error);

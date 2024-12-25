@@ -25,27 +25,65 @@
 		<div class="authentication-lock-screen d-flex align-items-center justify-content-center">
 			<div class="card shadow-none bg-transparent">
 				<div class="card-body p-md-5 text-center">
-					<h2 class="text-white">10:53 AM</h2>
-					<h5 class="text-white">Tuesday, November 29, 2024</h5>
+					<!-- Time and Date Display -->
+					<h2 class="text-white" id="current-time">Loading time...</h2>
+					<h5 class="text-white" id="current-date">Loading date...</h5>
+					
 					<div class="">
 						<img src="assets/images/icons/user.png" class="mt-5" width="120" alt="" />
 					</div>
 					<p class="mt-2 text-white">Administrator</p>
-					
-
-					<div class="form-group mt-3">
-						<input type="text" class="form-control" placeholder="Admin Id" />
-					</div>
-
-					
-					<div class="form-group mt-3">
-						<input type="password" class="form-control" placeholder="Password" />
-					</div>
-					<button type="button" class="btn btn-light btn-block">Login</button>
+	
+					<!-- Start of the form -->
+					<form action="/admin/adminLoginPost" method="POST">
+						<div class="form-group mt-3">
+							<input type="text" class="form-control" name="adminId" placeholder="Admin Id" required />
+						</div>
+	
+						<div class="form-group mt-3">
+							<input type="password" class="form-control" name="password" placeholder="Password" required />
+						</div>
+						<button type="submit" class="btn btn-light btn-block">Login</button>
+					</form>
+					<!-- End of the form -->
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<!-- JavaScript to update time and date -->
+	<script>
+		function updateTime() {
+			const timeElement = document.getElementById('current-time');
+			const dateElement = document.getElementById('current-date');
+	
+			const now = new Date();
+			
+			// Get hours, minutes, seconds
+			let hours = now.getHours();
+			let minutes = now.getMinutes();
+			let seconds = now.getSeconds();
+	
+			// Add leading zero to single digit minutes and seconds
+			minutes = minutes < 10 ? '0' + minutes : minutes;
+			seconds = seconds < 10 ? '0' + seconds : seconds;
+	
+			// Format time as HH:MM:SS AM/PM
+			const formattedTime = `${hours % 12 || 12}:${minutes}:${seconds} ${hours >= 12 ? 'PM' : 'AM'}`;
+			timeElement.textContent = formattedTime;
+	
+			// Get and format the date
+			const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+			const formattedDate = now.toLocaleDateString('en-US', options);
+			dateElement.textContent = formattedDate;
+		}
+	
+		// Update time every second
+		setInterval(updateTime, 1000);
+		updateTime(); // Call it once immediately to set the time on page load
+	</script>
+	
+	
 	<!-- end wrapper -->
 </body>
 
