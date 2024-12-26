@@ -143,6 +143,7 @@ section {
   overflow: hidden;
 }
 
+
 /* -------------------------------------------
 
 typography
@@ -192,7 +193,7 @@ h1,
     font-size: 74px;
   }
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   h1,
 .mil-h1 {
     font-size: 72px;
@@ -216,7 +217,7 @@ h2,
   font-size: 68px;
   line-height: 120%;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   h2,
 .mil-h2 {
     font-size: 56px;
@@ -239,7 +240,7 @@ h3,
 .mil-h3 {
   font-size: 42px;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   h3,
 .mil-h3 {
     font-size: 39px;
@@ -262,7 +263,7 @@ h4,
 .mil-h4 {
   font-size: 28px;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   h4,
 .mil-h4 {
     font-size: 26px;
@@ -298,7 +299,7 @@ h6,
   font-size: 18px;
   line-height: 150%;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   h6,
 .mil-h6 {
     font-size: 17px;
@@ -1138,7 +1139,7 @@ cursor
 .mil-ball.mil-accent .mil-more-text, .mil-ball.mil-accent .mil-choose-text {
   color: rgb(0, 0, 0);
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   .mil-ball {
     display: none;
   }
@@ -1191,6 +1192,7 @@ frame
   font-size: 42px;
   font-weight: 500;
   line-height: 100%;
+  
 }
 @media screen and (max-width: 992px) {
   .mil-logo {
@@ -1216,19 +1218,22 @@ frame
   width: 100%;
   height: 100%;
 }
-@media screen and (max-width: 1200px) {
+
+
+
+@media screen and (max-width: 1600px) {
   .mil-frame {
     padding: 30px;
   }
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   .mil-frame {
     padding: 0;
     z-index: 999;
     height: 90px;
   }
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   .mil-frame .mil-frame-top {
     height: 90px;
     background-color: rgba(0, 0, 0, 0.95);
@@ -1256,7 +1261,7 @@ frame
       -ms-flex-align: end;
           align-items: flex-end;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   .mil-frame .mil-frame-bottom {
     display: none;
   }
@@ -1387,7 +1392,7 @@ menu
   width: 100%;
   padding: 50px 60px;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   .mil-menu-frame .mil-frame-top {
     display: none;
   }
@@ -1405,7 +1410,7 @@ menu
   -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
   transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   .mil-menu-frame .mil-main-menu {
     -webkit-transform: translateY(30px);
             transform: translateY(30px);
@@ -1441,7 +1446,7 @@ menu
   -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
   transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   .mil-menu-frame .mil-menu-right-frame {
     display: none;
   }
@@ -1622,7 +1627,7 @@ menu
 .mil-main-menu ul li.mil-has-children ul.mil-active {
   max-height: 200px;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   .mil-main-menu {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -1698,7 +1703,7 @@ banner
 .mil-inner-banner .mil-banner-content {
   padding: 150px 0 0 0;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   .mil-inner-banner .mil-banner-content {
     padding: 180px 0 0 0;
   }
@@ -2476,7 +2481,7 @@ services
 .mil-service-card-lg.mil-other-card:hover .mil-link svg path {
   fill: rgb(61, 215, 180);
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   .mil-service-card-lg.mil-other-card {
     padding: 30px;
   }
@@ -4196,7 +4201,7 @@ html.is-animating .mil-frame {
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   html.is-animating .mil-frame {
     -webkit-transform: scale(1);
             transform: scale(1);

@@ -20,7 +20,7 @@
         <div class="mil-menu-frame">
             <!-- frame clone -->
             <div class="mil-frame-top">
-                <a href="/" class="mil-logo">Bē1.</a>
+                <a href="/" class="mil-logo"></a>
                 <div class="mil-menu-btn">
                     <span></span>
                 </div>
@@ -36,12 +36,24 @@
                                     <li class="mil-has-children mil-active">
                                         <a href="/">Homepage</a>
                                     </li>
-                                    <li class="mil-has-children">
+
+
+
+
+
+
+                                    
+                                    <!-- <li class="mil-has-children">
                                         <a href="/events">Events</a>
                                     </li>
                                     <li class="mil-has-children">
                                         <a href="/testimonial">Reflections</a>
-                                    </li>
+                                    </li> -->
+
+
+
+
+                                    
                                     <li class="mil-has-children">
                                         <a href="/contact">Contact</a>
                                     </li>    
@@ -118,11 +130,12 @@
         <div class="mil-curtain"></div>
         <!-- curtain end -->
 
+        <img class="logo-image" src="/user/Images/Low/44444.png" alt="Logo" style="z-index: 1010; position: fixed; padding: 20px;">
+
         <!-- frame -->
         <div class="mil-frame">
-            <div class="mil-frame-top">
+            <div class="mil-frame-top" >
                 <a href="/" class="mil-logo">
-                    <img class="logo-image " src="user/Images/Low/44444.png" alt="Logo">
                 </a>
                 <div class="mil-menu-btn">
                     <span></span>
@@ -166,13 +179,26 @@
                                     </div>
                                 </div>
 
-                                <a href="/consulting" class="mil-button mil-arrow-place mil-btn-space">
+
+
+
+
+
+
+
+
+                                <!-- <a href="/consulting" class="mil-button mil-arrow-place mil-btn-space">
                                     <span>What we do</span>
                                 </a>
 
                                 <a href="/events" class="mil-link mil-muted mil-arrow-place">
                                     <span>View works</span>
-                                </a>
+                                </a> -->
+
+
+
+
+                                
 
                                 <div class="mil-circle-text">
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve" class="mil-ct-svg mil-rotate" data-value="360">
@@ -198,7 +224,7 @@
                 <!-- banner end -->
 
                 <!-- about -->
-                <section id="about">
+                <section id="about" >
                     <div class="container mil-p-120-30">
                         <div class="row justify-content-between align-items-center">
                             <div class="col-lg-6 col-xl-5">
@@ -212,6 +238,7 @@
                                     <div class="mil-about-quote">
                                         <div class="mil-avatar mil-up">
                                             <img src="user/Images/razilImages/2.webp" alt="Founder">
+                                            
                                         </div>
                                         <h6 class="mil-quote mil-up">Razil <span class="mil-thin"></span> <br> <span class="mil-thin">Founder and CEO</span></h6>
                                     </div>
@@ -223,7 +250,7 @@
                                 <div class="mil-about-photo mil-mb-90">
                                     <div class="mil-lines-place"></div>
                                     <div class="mil-up mil-img-frame" style="padding-bottom: 160%;">
-                                        <img src="user/Images/razilImages/21.jpg" alt="img" class="mil-scale" data-value-1="1" data-value-2="1.2">
+                                        <img src="/Working/file.png" alt="img" class="mil-scale" data-value-1="1" data-value-2="1.2">
                                     </div>
                                 </div>
 
@@ -539,9 +566,16 @@
 
 
 
+<!-- -------------------------------------------------------    TESTIMONIALS.     ------------------------------------------------------ -->
+
+
+
+
+
+
 
                 <!-- reviews -->
-                <section class="mil-soft-bg">
+                <!-- <section class="mil-soft-bg">
                     <div class="container mil-p-120-120">
 
                         <div class="row">
@@ -626,7 +660,7 @@
                         </div>
 
                     </div>
-                </section>
+                </section> -->
                 <!-- reviews end -->
 
                 <!-- partners -->
@@ -654,8 +688,26 @@
                 </div>
                 <!-- partners end -->
 
+
+
+
+
+
+
+<!-- -------------------------------------------------------    LATEST EVENT.     ------------------------------------------------------ -->
+
+
+
+
+
+
+
+
+
+
+
                 <!-- blog -->
-                <section>
+                <!-- <section>
                     <div class="container mil-p-120-60">
                         <div class="row align-items-center mil-mb-30">
                             <div class="col-lg-6 mil-mb-30">
@@ -712,8 +764,19 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> -->
                 <!-- blog end -->
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const image = document.getElementsByClassName('logo-image')[0];
+                        image.style.display = 'none';
+                        setTimeout(() => {
+                            image.style.display = 'block';
+                            image.style.opacity = 1
+                        }, 5000); 
+                    });
+                </script>
 
                 <!-- footer -->
                 <%- include('./footer') %>
