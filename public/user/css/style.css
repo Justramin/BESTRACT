@@ -1033,7 +1033,7 @@ preloader
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
 }
 .mil-preloader .mil-preloader-animation {
   opacity: 0;
@@ -1376,7 +1376,7 @@ menu
   z-index: 9;
   width: 100%;
   height: 100vh;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
   opacity: 0;
   pointer-events: none;
   -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
@@ -1545,7 +1545,7 @@ menu
       -ms-flex-align: center;
           align-items: center;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   font-size: 34px;
   -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
   transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
@@ -1588,7 +1588,7 @@ menu
           filter: brightness(110%);
 }
 .mil-main-menu ul li.mil-has-children > a:hover {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   padding-left: 25px;
 }
 .mil-main-menu ul li.mil-has-children > a:hover:before {
