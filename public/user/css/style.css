@@ -392,7 +392,7 @@ a {
 }
 
 .mil-muted {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .mil-dark {
@@ -1883,7 +1883,7 @@ circle text
   height: 140px;
 }
 .mil-circle-text .mil-ct-svg text {
-  fill: rgba(255, 255, 255, 0.4);
+  fill: rgba(0, 0, 0, 0.4);
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 500;
@@ -1894,7 +1894,7 @@ circle text
   position: absolute;
 }
 .mil-circle-text:hover svg text {
-  fill: rgb(255, 255, 255);
+  fill: rgb(0, 0, 0);
 }
 @media screen and (max-width: 992px) {
   .mil-circle-text {
@@ -1987,7 +1987,7 @@ dodecahedron
   right: 100px;
 }
 .mil-position-1 .mil-pentagon div {
-  border-top: 0.1px solid rgb(255, 255, 255);
+  border-top: 0.1px solid rgb(0, 0, 0);
 }
 
 .mil-position-2 {
@@ -1995,7 +1995,7 @@ dodecahedron
   left: 15%;
 }
 .mil-position-2 .mil-pentagon div {
-  border-top: 1px solid rgb(255, 255, 255);
+  border-top: 1px solid rgb(0, 0, 0);
 }
 .mil-position-2 .mil-dodecahedron {
   -webkit-animation-delay: 0.5s;
@@ -2012,7 +2012,7 @@ dodecahedron
   right: 35%;
 }
 .mil-position-3 .mil-pentagon div {
-  border-top: 1px solid rgb(255, 255, 255);
+  border-top: 1px solid rgb(0, 0, 0);
 }
 .mil-position-3 .mil-dodecahedron {
   -webkit-animation-delay: 1s;
@@ -2029,7 +2029,7 @@ dodecahedron
   right: 20%;
 }
 .mil-position-4 .mil-pentagon div {
-  border-top: 0.1px solid rgb(255, 255, 255);
+  border-top: 0.1px solid rgb(0, 0, 0);
 }
 .mil-position-4 .mil-dodecahedron {
   -webkit-animation-delay: 0.5s;
@@ -2412,23 +2412,23 @@ services
 }
 
 .mil-services-grid {
-  border-top: solid 1px rgba(255, 255, 255, 0.1);
+  border-top: solid 1px rgba(0, 0, 0, 0.1);
 }
 .mil-services-grid .mil-services-grid-item {
-  border-right: solid 1px rgba(255, 255, 255, 0.1);
+  border-right: solid 1px rgba(0, 0, 0, 0.1);
 }
 .mil-services-grid .mil-services-grid-item:first-child {
-  border-left: solid 1px rgba(255, 255, 255, 0.1);
+  border-left: solid 1px rgba(0, 0, 0, 0.1);
 }
 @media screen and (max-width: 992px) {
   .mil-services-grid {
     padding-bottom: 90px;
   }
   .mil-services-grid .mil-services-grid-item {
-    border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
   }
   .mil-services-grid .mil-services-grid-item:nth-child(3) {
-    border-left: solid 1px rgba(255, 255, 255, 0.1);
+    border-left: solid 1px rgba(0, 0, 0, 0.1);
   }
 }
 @media screen and (max-width: 768px) {
@@ -2436,8 +2436,8 @@ services
     padding-bottom: 90px;
   }
   .mil-services-grid .mil-services-grid-item {
-    border-left: solid 1px rgba(255, 255, 255, 0.1);
-    border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+    border-left: solid 1px rgba(0, 0, 0, 0.1);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -2649,7 +2649,7 @@ social icons
   margin-right: 0;
 }
 .mil-social-icons li a {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-size: 18px;
   -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
   transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
@@ -3027,7 +3027,7 @@ footer
   display: block;
   font-weight: 500;
   font-size: 28px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
   -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
   transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
 }
@@ -3062,7 +3062,7 @@ footer
 .mil-subscribe-form input {
   height: 100%;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   color: rgb(0, 0, 0);
   font-size: 12px;
   font-weight: 500;
